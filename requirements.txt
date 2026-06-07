@@ -1,0 +1,9 @@
+python-dotenv>=1.0.0
+yt-dlp>=2025.6.9
+sarvamai>=0.1.0
+pandas>=2.0.0
+flask>=3.0.0
+datasets>=2.18.0
+huggingface_hub>=0.23.0
+soundfile>=0.12.0
+

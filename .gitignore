@@ -1,0 +1,32 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# generated audio + intermediate files
+data/raw/
+data/clips/
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# virtualenvs
+.venv/
+venv/
+env/
+
+# editor / OS junk
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# huggingface / hub caches if run from inside the project
+.cache/
+hf_cache/
