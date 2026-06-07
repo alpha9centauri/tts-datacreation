@@ -239,12 +239,14 @@ only the new chunks get downloaded and transcribed.
   clients and falls back to cookies from Chrome for age-gated content.
   The verbose warnings are normal — what matters is the final
   `OK clip ...` line per clip.
-- **Speaker IDs are approximations.** `speaker_id` is set to the YouTube
-  `video_id`. We did not run diarization end-to-end; rows are assumed
-  single-speaker because each source span was chosen that way.
-- **Transcript quality.** Sarvam `saaras:v3` is strong but not perfect.
-  Manual review through the web UI is the recommended last step before
-  publishing.
+- **Single speaker by curation, not by model.** A separate diarization
+  model was not used. Each source URL/timestamp was hand-picked to
+  contain one speaker, and every clip was listened to during the manual
+  review passes; any clip that drifted into multi-speaker territory was
+  re-cut or replaced. `speaker_id` is set to the YouTube `video_id`.
+- **Transcripts: ASR + iterative manual review.** Sarvam `saaras:v3` is
+  the starting point; transcripts were then corrected through several
+  passes in the web UI before publishing.
 - **>30 s clips.** This pipeline targets the sync ASR endpoint. For
   uncut long-form transcription, switch to Sarvam's batch API
   (out of scope here).

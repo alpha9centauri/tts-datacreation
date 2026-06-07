@@ -148,16 +148,21 @@ Each row contains:
 - `duration_sec`, `start_sec`, `end_sec` — integers, seconds
 - `video_id`, `source_url` — YouTube provenance
 
-## Notes & limitations
+## Notes & curation
 
 - Clips longer than 30 s in the source spec were split into back-to-back
   ≤30 s pieces so they fit Sarvam's sync ASR limit.
-- Transcripts come from an ASR model; not all are perfect — manual review
-  on a subset corrected obvious errors but the rest are model output.
-- `speaker_id` is approximated as the YouTube `video_id`. Most rows are
-  single-speaker monologues; we did not run diarization to verify across
-  the entire set.
-- Emotion tags come from the curator's labelling of each source clip.
+- Transcripts come from Sarvam `saaras:v3`; every clip was then reviewed
+  manually, with multiple iterative passes to correct ASR errors,
+  normalize spelling, and tighten emotion tags.
+- A separate diarization model was **not** used. Each source URL/timestamp
+  was hand-picked to contain a single speaker, and the manual review
+  pass listened end-to-end to every clip and re-cut or replaced any
+  that drifted into multi-speaker territory.
+- `speaker_id` is set to the YouTube `video_id` — each source video has
+  exactly one speaker by construction.
+- Emotion tags come from the curator's labelling of each source clip,
+  refined during the review passes.
 
 ## License
 
